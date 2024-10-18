@@ -21,23 +21,6 @@ void Board::move(int i, char m)
   }
 }
 
-
-
-bool Board::isValidMove(int move){
-  if (move < 1 || move > 9) {
-    return false;
-  }
-
-  int index = move - 1;
-  char char_at_spot = this->moves[index];
-
-  if (!(std::isdigit(char_at_spot))) {
-    return false;
-  }
-
-  return true;
-}
-
 char Board::get_mark(int i)
 {
   return this->moves.at(i - 1);

@@ -10,6 +10,5 @@ private:
 public:
   void clear();
   void move(int i, char m);
-  bool isValidMove(int move);
   char get_mark(int i);
 };

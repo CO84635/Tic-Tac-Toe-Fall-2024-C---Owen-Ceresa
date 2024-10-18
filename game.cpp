@@ -13,13 +13,11 @@ Game::Game(Console *console, GameState *game_state, HumanPlayer *player_one, Hum
 
 void Game::start()
 {
-  std::cout << "Welcome to Tic-Tac-Toe!" << std::endl;
-
   while (game_state->current_state() == "in-progress")
   {
     std::cout << console->display();
     current_player->get_move();
-    if (current_player->mark == player_one->mark)
+    if (current_player->mark == 'X')
     {
       current_player = player_two;
     }

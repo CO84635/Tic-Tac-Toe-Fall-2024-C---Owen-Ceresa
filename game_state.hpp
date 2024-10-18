@@ -9,7 +9,6 @@ class GameState
 private:
   Board *board;
   bool three_in_a_row(int cell_one, int cell_two, int cell_three);
-  bool is_full();
   std::string select_winner(int cell);
   int winning_combos[4][3];
 
