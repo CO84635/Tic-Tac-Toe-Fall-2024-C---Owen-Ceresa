@@ -3,6 +3,7 @@
 #include "game_state.hpp"
 #include "console.hpp"
 #include "human_player.hpp"
+#include "board.hpp"
 
 class Game
 {

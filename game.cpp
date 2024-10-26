@@ -13,17 +13,41 @@ Game::Game(Console *console, GameState *game_state, HumanPlayer *player_one, Hum
 
 void Game::start()
 {
-  while (game_state->current_state() == "in-progress")
-  {
-    std::cout << console->display();
-    current_player->get_move();
-    if (current_player->mark == 'X')
+  char play_again;
+    do
     {
-      current_player = player_two;
-    }
-    else
-    {
-      current_player = player_one;
-    }
-  }
+        std::cout << "Welcome to Tic-Tac-Toe!" << std::endl;
+
+        while (game_state->current_state() == "in-progress")
+        {
+            std::cout << console->display();
+
+            if (current_player == player_one){
+              std::cout << "Player One:" << std::endl;
+            } else {
+              std::cout << "Player Two:" << std::endl;
+            }
+           
+            current_player->get_move();
+
+            if (game_state->current_state() != "in-progress")
+            {
+                std::cout << game_state->current_state() << std::endl;
+                break;
+            }
+
+            current_player = (current_player == player_one) ? player_two : player_one;
+        }
+        std::cout << console->display();
+
+        std::cout << "Do you want to play again? (y/n): ";
+        std::cin >> play_again;
+
+        if (play_again == 'y' || play_again == 'Y')
+        {
+            game_state->clearBoard();
+            current_player = player_one;
+        }
+
+    } while (play_again == 'y' || play_again == 'Y');
 }
