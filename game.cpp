@@ -38,10 +38,13 @@ void Game::start()
 
             current_player = (current_player == player_one) ? player_two : player_one;
         }
+        std::cout << "Final Game State: " << std::endl;
         std::cout << console->display();
 
         std::cout << "Do you want to play again? (y/n): ";
         std::cin >> play_again;
+
+        HumanPlayer::reset_input();
 
         if (play_again == 'y' || play_again == 'Y')
         {
