@@ -3,8 +3,9 @@
 #include <string>
 #include "console.hpp"
 #include "board.hpp"
+#include "player.hpp"
 
-class HumanPlayer
+class HumanPlayer : public Player 
 {
 private:
   Board *board;
@@ -12,7 +13,8 @@ private:
 
 public:
   char mark;
+
   HumanPlayer(Board *board, Console *console, char mark);
-  void get_move();
+  void get_move() override;
   static void reset_input();
 };

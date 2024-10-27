@@ -22,15 +22,7 @@ void HumanPlayer::get_move()
 
       std::stringstream ss(input);
       int move;
-
       if (ss >> move && ss.eof()) {
-      // if (!(std::cin >> move)) {
-      //       std::cout << "Invalid input. Please enter a number between 1 and 9." << std::endl;
-      //       std::cin.clear(); 
-      //       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      //       continue; 
-      //   }
-
         if (this->board->isValidMove(move)) {
             this->board->move(move, this->mark);
             validMove = true; 
