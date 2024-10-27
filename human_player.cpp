@@ -23,7 +23,7 @@ void HumanPlayer::get_move()
       std::stringstream ss(input);
       int move;
       if (ss >> move && ss.eof()) {
-        if (this->board->isValidMove(move)) {
+        if (move >= 1 && move <= 9 && this->board->isValidMove(move)) {
             this->board->move(move, this->mark);
             validMove = true; 
         } else {
