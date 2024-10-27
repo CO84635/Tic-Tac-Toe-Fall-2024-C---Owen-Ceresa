@@ -35,7 +35,6 @@ bool GameState::is_full()
 
 std::string GameState::current_state()
 {
-    // Check rows for a win
     for (int i = 0; i < 3; i++)
     {
         if (this->three_in_a_row(i * 3 + 1, i * 3 + 2, i * 3 + 3))
@@ -44,7 +43,6 @@ std::string GameState::current_state()
         }
     }
 
-    // Check columns for a win
     for (int i = 0; i < 3; i++)
     {
         if (this->three_in_a_row(i + 1, i + 4, i + 7))
@@ -53,7 +51,6 @@ std::string GameState::current_state()
         }
     }
 
-    // Check diagonals for a win
     if (this->three_in_a_row(1, 5, 9))
     {
         return select_winner(1);
