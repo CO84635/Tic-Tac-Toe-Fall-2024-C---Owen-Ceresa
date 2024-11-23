@@ -11,16 +11,20 @@ Game::Game(Console *console, GameState *game_state, Player *player_one, Player *
   this->current_player = player_one;
 }
 
-void Game::start()
+bool Game::start()
 {
   char play_again;
     do
     {
-        std::cout << "Welcome to Tic-Tac-Toe!" << std::endl;
-
         while (game_state->current_state() == "in-progress")
         {
             std::cout << console->display();
+            
+            if (game_state->current_state() != "in-progress")
+            {
+                std::cout << game_state->current_state() << std::endl;
+                break;
+            }
 
             if (current_player == player_one){
               std::cout << "Player One:" << std::endl;
@@ -53,9 +57,10 @@ void Game::start()
             player_one->reset_game();
             player_two->reset_game();
             current_player = player_one;
+            return true;
         } else if (response == "n" || response == "N") {
             std::cout << "Thanks for playing!" << std::endl;
-            break;  
+            return false;
         } else {
             std::cout << "Invalid response. Please enter 'y' or 'n'." << std::endl;
             continue; 

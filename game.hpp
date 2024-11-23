@@ -18,5 +18,5 @@ private:
 
 public:
   Game(Console *console, GameState *game_state, Player *player_one, Player *player_two);
-  void start();
+  bool start();
 };
