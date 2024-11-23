@@ -1,24 +1,19 @@
 #include <iostream>
-#include <limits>
 #include <sstream>
-#include "human_player.hpp"
-#include "console.hpp"
 #include "validator.hpp"
+#include "console.hpp"
+#include "swarm.hpp"
 
-HumanPlayer::HumanPlayer(Board *board, Console *console, char mark)
-{
-  this->board = board;
-  this->console = console;
-  this->mark = mark;
-}
-
-char HumanPlayer::get_mark()
+char Swarm::get_mark()
 {
   return this->mark;
 }
 
+void Swarm::reset_game() {
+    this->board->clear();
+}
 
-void HumanPlayer::get_move()
+void Swarm::get_move()
 {
   std::string input;
   bool validMove = false;
@@ -42,8 +37,4 @@ void HumanPlayer::get_move()
         std::cout << console->display() << std::endl;
       }
     }
-}
-
-void HumanPlayer::reset_game() {
-    this->board->clear();
 }

@@ -10,11 +10,11 @@ class HumanPlayer : public Player
 private:
   Board *board;
   Console *console;
-
-public:
   char mark;
 
+public:
   HumanPlayer(Board *board, Console *console, char mark);
+  char get_mark() override;
   void get_move() override;
-  static void reset_input();
+  void reset_game() override;
 };

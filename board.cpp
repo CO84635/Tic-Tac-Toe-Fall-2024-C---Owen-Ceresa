@@ -26,8 +26,6 @@ char Board::get_mark(int i)
   return this->moves.at(i - 1);
 }
 
-bool Board::isValidMove(int i)
-{
-    char at_move = this->moves[i - 1];
-    return (i > 0 && i < 10 && isdigit(at_move));
+char Board::get_move(int i) const {
+  return moves[i];
 }

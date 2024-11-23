@@ -38,19 +38,28 @@ void Game::start()
 
             current_player = (current_player == player_one) ? player_two : player_one;
         }
+
         std::cout << "Final Game State: " << std::endl;
         std::cout << console->display();
+        
 
+        std::string response;
         std::cout << "Do you want to play again? (y/n): ";
-        std::cin >> play_again;
+        getline(std::cin, response);
 
-        HumanPlayer::reset_input();
-
-        if (play_again == 'y' || play_again == 'Y')
+        if (response == "y" || response == "y")
         {
             game_state->clearBoard();
+            player_one->reset_game();
+            player_two->reset_game();
             current_player = player_one;
+        } else if (response == "n" || response == "N") {
+            std::cout << "Thanks for playing!" << std::endl;
+            break;  
+        } else {
+            std::cout << "Invalid response. Please enter 'y' or 'n'." << std::endl;
+            continue; 
         }
 
-    } while (play_again == 'y' || play_again == 'Y');
+    } while (true);
 }
