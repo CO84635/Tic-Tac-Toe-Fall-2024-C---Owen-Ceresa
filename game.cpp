@@ -18,14 +18,13 @@ bool Game::start()
     {
         while (game_state->current_state() == "in-progress")
         {
-            std::cout << console->display();
-            
             if (game_state->current_state() != "in-progress")
             {
-                std::cout << game_state->current_state() << std::endl;
+                std::cout << game_state << std::endl;
                 break;
             }
-
+            std::cout << console->display();
+            
             if (current_player == player_one){
               std::cout << "Player One:" << std::endl;
             } else {
@@ -40,13 +39,14 @@ bool Game::start()
                 break;
             }
 
-            current_player = (current_player == player_one) ? player_two : player_one;
+            if (game_state->current_state() == "in-progress") {
+                current_player = (current_player == player_one) ? player_two : player_one;
+            }
         }
 
         std::cout << "Final Game State: " << std::endl;
         std::cout << console->display();
         
-
         std::string response;
         std::cout << "Do you want to play again? (y/n): ";
         getline(std::cin, response);

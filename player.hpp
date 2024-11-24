@@ -5,7 +5,7 @@
 
 class Player{
 private:
-    bool is_swarm = false;
+    bool is_swarm;
 
 public:
     virtual ~Player() = default;
