@@ -37,7 +37,6 @@ bool GameState::is_full()
 std::string GameState::current_state()
 {
     if (current_player->get_is_swarm()) {
-
         char mark1 = board->get_mark(1);
         char mark3 = board->get_mark(3);
         char mark7 = board->get_mark(7);

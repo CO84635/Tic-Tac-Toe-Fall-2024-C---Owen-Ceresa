@@ -13,7 +13,7 @@ private:
     Board *board;
     char mark;
     Console *console;
-    bool BoardExploded;
+    bool BoardExploded = false;
 
 public:
     Pyromancer(Board *board, Console *console, char mark);
