@@ -15,7 +15,7 @@ public:
             output_file << "Total Games Played: " << stats.get_games_played_count() << "\n";
             output_file << "Player One Wins: " << stats.get_player_one_wins() << "\n";
             output_file << "Player Two Wins:  " << stats.get_player_two_wins() << "\n";
-            output_file << "Ties: " << stats.get_tie_count() << "\n";
+            output_file << "Ties: " << stats.get_tie_count();
 
             output_file.close();
         } else {
