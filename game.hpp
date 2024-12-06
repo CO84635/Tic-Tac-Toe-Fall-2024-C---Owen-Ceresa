@@ -5,6 +5,7 @@
 #include "human_player.hpp"
 #include "player.hpp"
 #include "board.hpp"
+#include "game_reporter.hpp"
 
 
 class Game
@@ -15,8 +16,9 @@ private:
   Player *player_one;
   Player *player_two;
   Player *current_player;
+  GameStatistics *stats;
 
 public:
-  Game(Console *console, GameState *game_state, Player *player_one, Player *player_two);
+  Game(Console *console, GameState *game_state, Player *player_one, Player *player_two, GameStatistics *stats);
   bool start();
 };

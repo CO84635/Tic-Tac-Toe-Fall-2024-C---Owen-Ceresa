@@ -1,14 +1,16 @@
 #include <iostream>
 
 #include "game.hpp"
+#include "game_statistics.hpp"
 
-Game::Game(Console *console, GameState *game_state, Player *player_one, Player *player_two)
+Game::Game(Console *console, GameState *game_state, Player *player_one, Player *player_two, GameStatistics *stats)
 {
   this->console = console;
   this->game_state = game_state;
   this->player_one = player_one;
   this->player_two = player_two;
   this->current_player = player_one;
+  this->stats = stats;
 }
 
 bool Game::start()
@@ -35,6 +37,14 @@ bool Game::start()
 
             if (game_state->current_state() != "in-progress")
             {
+                if (game_state->current_state() == "X wins") {
+                    stats->increment_player_one_wins();
+                } else if (game_state->current_state() == "O wins") {
+                    stats->increment_player_two_wins();
+                } else if (game_state->current_state() == "Game ended in a draw!"){
+                    stats->increment_ties();
+                }
+
                 std::cout << game_state->current_state() << std::endl;
                 break;
             }

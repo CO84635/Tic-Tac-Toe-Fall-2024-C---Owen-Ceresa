@@ -7,10 +7,14 @@
 #include "swarm.hpp"
 #include "game.hpp"
 #include "select_players.hpp"
+#include "game_statistics.hpp"
+#include "game_reporter.hpp"
 
 int main() {
     Board board;
     Console console(&board);
+    GameStatistics stats;
+    GameReport reporter;
     bool game_over = false;
     std::cout << "Welcome to Tic Tac Toe!" << std::endl;
     while (!game_over) {
@@ -26,7 +30,7 @@ int main() {
             SelectPlayers::selectPlayers(board, console, player_one, player_two, game_mode_option);
 
             GameState game_state(&board, &*player_one);
-            Game game(&console, &game_state, &*player_one, &*player_two);
+            Game game(&console, &game_state, &*player_one, &*player_two, &stats);
 
             game_over = !game.start();
             
@@ -36,6 +40,8 @@ int main() {
             std::cout << "Invalid response. Please enter '1' or '2'." << std::endl;
         }
     }
+
+    reporter.generateReport(stats);
 
     return 0;
 }

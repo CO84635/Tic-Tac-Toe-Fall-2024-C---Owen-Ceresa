@@ -8,7 +8,9 @@ GameState::GameState(Board *board, Player *current_player)
 
 bool GameState::three_in_a_row(int cell_one, int cell_two, int cell_three)
 {
-    return board->get_mark(cell_one) == board->get_mark(cell_two) && board->get_mark(cell_two) == board->get_mark(cell_three) && board->get_mark(cell_one) != ' ';
+    return board->get_mark(cell_one) == board->get_mark(cell_two) && 
+           board->get_mark(cell_two) == board->get_mark(cell_three) && 
+           board->get_mark(cell_one) != ' ';
 }
 
 void GameState::clearBoard(){
@@ -46,37 +48,31 @@ std::string GameState::current_state()
             && mark1 != '1' && mark1 != '2' && mark1 != '3' 
             && mark1 != '4' && mark1 != '5' && mark1 != '6' 
             && mark1 != '7' && mark1 != '8' && mark1 != '9') {
-                
             return select_winner(1);
         }
     }
 
-    for (int i = 0; i < 3; i++)
-    {
-        if (this->three_in_a_row(i * 3 + 1, i * 3 + 2, i * 3 + 3))
-        {
+    for (int i = 0; i < 3; i++) {
+        if (this->three_in_a_row(i * 3 + 1, i * 3 + 2, i * 3 + 3)) {
             return select_winner(i * 3 + 1);
         }
     }
 
-    for (int i = 0; i < 3; i++)
-    {
-        if (this->three_in_a_row(i + 1, i + 4, i + 7))
-        {
+    for (int i = 0; i < 3; i++) {
+        if (this->three_in_a_row(i + 1, i + 4, i + 7)) {
             return select_winner(i + 1);
         }
     }
 
-    if (this->three_in_a_row(1, 5, 9))
-    {
+    if (this->three_in_a_row(1, 5, 9)) {
         return select_winner(1);
     }
-    if (this->three_in_a_row(3, 5, 7))
-    {
+    
+    if (this->three_in_a_row(3, 5, 7)) {
         return select_winner(3);
     }
 
-    if(is_full()) {
+    if (is_full()) {
         return "Game ended in a draw!";
     }
 
